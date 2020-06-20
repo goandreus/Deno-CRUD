@@ -1,13 +1,10 @@
-import { Application, Router } from 'https://deno.land/x/oak/mod.ts'
+import { Application } from 'https://deno.land/x/oak/mod.ts'
+import router from './routes/index.routers.ts'
 
-const router = new Router();
 const app = new Application();
 
-router.get('/', ({response}) => {
-    response.body = 'hello word'
-});
-
 app.use(router.routes());
+app.use(router.allowedMethods());
 
 console.log('server running on port', 3000);
 
